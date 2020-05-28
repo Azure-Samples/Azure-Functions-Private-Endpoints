@@ -48,25 +48,27 @@ The following components are required to run this sample:
 
 Optionally, you can use the [Azure Cosmos Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) if you wish to develop locally.
 
-## Setup
-
-1. Clone or download this sample repository.
-2. After cloning the repository, edit the `deploy.sh` script (in the `template` folder) to include your Azure subscription ID.
-
-    ```azurecli
-    az account set -s [YOUR-SUBSCRIPTION-ID]
-    ```
-
-3. Execute the `deploy.sh` script to deploy the sample to your Azure subscription.
-4. Once all the Azure resources are deployed (which can take about 10-12 minutes), you will need to deploy the Azure Function to the newly created Azure Function app. You can use the [Azure Functions Core Tools to deploy the function](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash#publish).
-
-    ```azurecli
-    func azure functionapp publish [YOUR-FUNCTION-APP-NAME]
-    ```
-
 ## Deploy to Azure
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FAzure-Functions-Private-Endpoints%2Fmaster%2Ftemplate%2Fazuredeploy.json%3Ftoken%3DAAIW4AOWATWNQLL2JZKDBAK63EOOU)
+
+### Deploy the Azure resources
+
+An alternative to the Deploy to Azure button is to use the Azure CLI to deploy the included Resource Manager template.
+
+```azurecli
+az group create --name [YOUR-RESOURCE-GROUP-NAME] --location [YOUR-DESIRED-AZURE-REGION]
+
+az deployment group create -g [YOUR-RESOURCE-GROUP-NAME] --template-file azuredeploy.json --parameters azuredeploy.parameters.json
+```
+
+### Deploy the Azure Function code
+
+Once all the Azure resources are deployed (which can take about 10-12 minutes), you will need to deploy the Azure Function to the newly created Azure Function app. You can use the [Azure Functions Core Tools to deploy the function](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash#publish).
+
+```azurecli
+func azure functionapp publish [YOUR-FUNCTION-APP-NAME]
+```
 
 ## Running the sample
 
