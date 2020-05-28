@@ -19,7 +19,7 @@ products:
 - vs-code
 description: "Sample showing how to connect Azure Functions to Azure resources using private endpoints."
 urlFragment: "connect-to-private-endpoints-with-azure-functions"
-azureDeploy:
+azureDeploy: https://raw.githubusercontent.com/Azure-Samples/Azure-Functions-Private-Endpoints/master/template/azuredeploy.json?token=AAIW4AOWATWNQLL2JZKDBAK63EOOU
 ---
 
 # Connect to private endpoints with Azure Functions
@@ -31,6 +31,8 @@ Guidance on onboarding samples to docs.microsoft.com/samples: https://review.doc
 
 Taxonomies for products and languages: https://review.docs.microsoft.com/new-hope/information-architecture/metadata/taxonomies?branch=master
 -->
+
+![Build .NET Core](https://github.com/Azure-Samples/Azure-Functions-Private-Endpoints/workflows/.NET%20Core/badge.svg)
 
 This sample shows how to use Azure Functions with other Azure resources using a private endpoint connection.  The sample uses an [Azure Functions Premium plan](https://docs.microsoft.com/azure/azure-functions/functions-premium-plan) with [regional VNet Integration](https://docs.microsoft.com/azure/azure-functions/functions-networking-options#regional-virtual-network-integration) to interact with Azure resources confined to a virtual network.
 
@@ -64,7 +66,7 @@ Optionally, you can use the [Azure Cosmos Emulator](https://docs.microsoft.com/a
 
 ## Deploy to Azure
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FAzure-Functions-Private-Endpoints%2Fmaster%2Ftemplate%2Fazuredeploy.json%3Ftoken%3DAAIW4AOWATWNQLL2JZKDBAK63EOOU)
 
 ## Running the sample
 
