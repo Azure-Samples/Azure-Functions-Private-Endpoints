@@ -34,7 +34,7 @@ Taxonomies for products and languages: https://review.docs.microsoft.com/new-hop
 
 ![Build .NET Core](https://github.com/Azure-Samples/Azure-Functions-Private-Endpoints/workflows/.NET%20Core/badge.svg)
 
-This sample shows how to use Azure Functions with other Azure resources using a private endpoint connection.  The sample uses an [Azure Functions Premium plan](https://docs.microsoft.com/azure/azure-functions/functions-premium-plan) with [regional VNet Integration](https://docs.microsoft.com/azure/azure-functions/functions-networking-options#regional-virtual-network-integration) to interact with Azure resources confined to a virtual network.
+This sample shows how Azure Functions can connect to other Azure resources via a [private endpoint](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) connection.  The sample uses an [Azure Functions Premium plan](https://docs.microsoft.com/azure/azure-functions/functions-premium-plan) with [regional VNet Integration](https://docs.microsoft.com/azure/azure-functions/functions-networking-options#regional-virtual-network-integration) to interact with Azure resources confined to a virtual network.
 
 ## Prerequisites
 
@@ -46,15 +46,17 @@ The following components are required to run this sample:
 - [Azure Functions Core Tools](https://docs.microsoft.com/azure/azure-functions/functions-run-local)
 - [Azure subscription](https://azure.microsoft.com/free/)
 
-Optionally, you can use the [Azure Cosmos Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) if you wish to develop locally.
+### Options
+
+You can use the [Azure Cosmos Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) and [Azure Storage Emulator](https://docs.microsoft.com/azure/storage/common/storage-use-emulator), along with the Azure Functions Core Tools, if you wish to develop and test locally.
 
 ## Deploy to Azure
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FAzure-Functions-Private-Endpoints%2Fmaster%2Ftemplate%2Fazuredeploy.json%3Ftoken%3DAAIW4AOWATWNQLL2JZKDBAK63EOOU)
 
-### Deploy the Azure resources
+### Deploy to Azure using the Azure CLI
 
-An alternative to the Deploy to Azure button is to use the Azure CLI to deploy the included Resource Manager template.
+An alternative deployment approach is to use the Azure CLI to deploy the included Resource Manager template.
 
 ```azurecli
 az group create --name [YOUR-RESOURCE-GROUP-NAME] --location [YOUR-DESIRED-AZURE-REGION]
@@ -64,7 +66,7 @@ az deployment group create -g [YOUR-RESOURCE-GROUP-NAME] --template-file azurede
 
 ### Deploy the Azure Function code
 
-Once all the Azure resources are deployed (which can take about 10-12 minutes), you will need to deploy the Azure Function to the newly created Azure Function app. You can use the [Azure Functions Core Tools to deploy the function](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash#publish).
+After the Azure resources are deployed (which can take about 10-12 minutes), you will need to deploy the Azure Function to the newly created Azure Function app. You can use the [Azure Functions Core Tools to deploy the function](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=windows%2Ccsharp%2Cbash#publish).
 
 ```azurecli
 func azure functionapp publish [YOUR-FUNCTION-APP-NAME]
@@ -77,8 +79,8 @@ Please perform the following steps to run the sample.
 1. Connect to the newly created VM using Azure Bastion
 2. Copy the `sample.csv` file to the newly created VM
 3. From the VM, use a web browser to open the Azure portal.
-4. Navigate to the newly created storage account which starts with `widgets`, and using Storage Explorer in the portal, upload the `sample.csv` file to the `orders` blob storage container.
-5. Within a few seconds, the function's blog trigger should execute and process the file.
+4. Navigate to the newly created storage account which starts with `widgets`.  Using Storage Explorer in the portal, upload the `sample.csv` file to the `orders` blob storage container.
+5. Within a few seconds, the function's [blog trigger](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob-trigger?tabs=csharp) should execute and process the file.
 6. Navigate to newly created CosmosDB resource.  Using Data Explorer in the portal, open the `Widgets` database and `Orders` collection. You should notice the same number of documents in the CosmosDB collection as were in the sample CSV file.
 
 ## Key concepts
@@ -100,7 +102,7 @@ The sample sets up the following Azure resources:
 
 The diagram provide shows a high-level depiction of the sample architecture.
 
-![High level architecture diagram](media/private-function-diagram.jpg)
+![High level architecture diagram](./media/private-function-diagram.jpg)
 
 ### Storage accounts
 
