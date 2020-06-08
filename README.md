@@ -4,7 +4,6 @@ languages:
 - csharp
 products:
 - azure
-- dotnet-core
 - azure-functions
 - azure-storage
 - azure-blob-storage
@@ -16,6 +15,7 @@ products:
 - azure-resource-manager
 - azure-virtual-machines-windows
 - azure-virtual-network
+- dotnet-core
 - vs-code
 description: "Sample showing how to connect Azure Functions to Azure resources using private endpoints."
 urlFragment: "connect-to-private-endpoints-with-azure-functions"
