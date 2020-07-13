@@ -29,7 +29,7 @@
         "applicationInsightsName": "[concat(variables('functionAppName'), '-ai')]",
         "functionsSubnetName": "[concat(variables('vnetName'), '-functions')]",
         "privateEndpointSubnetName": "[concat(variables('vnetName'), '-privateendpoint')]",
-        "privateEndpointStorageBlobName": "widgets-blob-private-endpoint'",
+        "privateEndpointStorageBlobName": "widgets-blob-private-endpoint",
         "privateEndpointCosmosDbName": "[concat(variables('cosmosDbAccountName'), '-private-endpoint')]",
         "privateEndpointWebJobsQueueStorageName": "[concat(variables('functionWebJobsStorageAccountName'), '-queue-private-endpoint')]",
         "privateEndpointWebJobsTableStorageName": "[concat(variables('functionWebJobsStorageAccountName'), '-table-private-endpoint')]",
