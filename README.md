@@ -8,14 +8,14 @@ products:
 - azure-storage
 - azure-blob-storage
 - azure-bastion
-- azure-application-insights
+- azure-monitor
 - azure-cosmos-db
 - azure-dns
 - azure-private-link
 - azure-resource-manager
 - azure-virtual-machines-windows
 - azure-virtual-network
-- dotnet-core
+- dotnet
 - vs-code
 description: "Sample showing how to connect Azure Functions to Azure resources using private endpoints."
 urlFragment: "connect-to-private-endpoints-with-azure-functions"
